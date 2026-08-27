@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Special Surprise for Safa ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff4f81, #8b1e5a, #4b1248);
+  color: white;
+  overflow-x: hidden;
+}
+
+.container {
+  min-height: 100vh;
+  text-align: center;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart {
+  font-size: 65px;
+  animation: beat 1.2s infinite;
+}
+
+h1 {
+  font-size: clamp(42px, 10vw, 90px);
+  margin: 15px 0;
+  text-shadow: 0 5px 15px rgba(0,0,0,.3);
+}
+
+.subtitle {
+  font-size: clamp(18px, 4vw, 28px);
+  margin-bottom: 35px;
+}
+
+#countdown {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+}
+
+.time-box {
+  min-width: 90px;
+  padding: 15px;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+}
+
+.number {
+  display: block;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.label {
+  font-size: 13px;
+  opacity: .9;
+}
+
+button {
+  border: none;
+  border-radius: 50px;
+  padding: 18px 35px;
+  font-size: 19px;
+  font-weight: bold;
+  cursor: pointer;
+  background: white;
+  color: #c2185b;
+  box-shadow: 0 8px 25px rgba(0,0,0,.25);
+  transition: .3s;
+}
+
+button:hover {
+  transform: scale(1.08);
+}
+
+#surprise {
+  display: none;
+  max-width: 750px;
+  margin-top: 40px;
+  padding: 35px 25px;
+  background: rgba(255,255,255,.15);
+  border-radius: 25px;
+  line-height: 1.8;
+  font-size: 19px;
+  backdrop-filter: blur(12px);
+}
+
+#surprise h2 {
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+#surprise p {
+  margin-bottom: 18px;
+}
+
+.floating-heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 25px;
+  animation: floatUp linear infinite;
+  pointer-events: none;
+}
+
+@keyframes beat {
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.footer {
+  margin-top: 40px;
+  opacity: .8;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="heart">❤️</div>
+
+  <h1>For Safa ❤️</h1>
+
+  <p class="subtitle">
+    Something beautiful is waiting for you...
+  </p>
+
+  <div id="countdown">
+    <div class="time-box">
+      <span class="number" id="days">0</span>
+      <span class="label">DAYS</span>
+    </div>
+
+    <div class="time-box">
+      <span class="number" id="hours">0</span>
+      <span class="label">HOURS</span>
+    </div>
+
+    <div class="time-box">
+      <span class="number" id="minutes">0</span>
+      <span class="label">MINUTES</span>
+    </div>
+
+    <div class="time-box">
+      <span class="number" id="seconds">0</span>
+      <span class="label">SECONDS</span>
+    </div>
+  </div>
+
+  <button onclick="openSurprise()">🎁 Open Your Surprise</button>
+
+  <div id="surprise">
+    <h2>Happy Birthday, Safa! 🎂❤️</h2>
+
+    <p>
+      My beautiful Safa, today is not just your birthday...
+      Today is the day the world became more beautiful because you came into it. ❤️
+    </p>
+
+    <p>
+      I may not be beside you right now, but my heart is with you.
+      Every smile of yours is special to me, and I hope this small surprise
+      makes your day unforgettable.
+    </p>
+
+    <p>
+      I pray that this new year of your life brings you endless happiness,
+      beautiful dreams, success, peace, and everything your heart desires.
+    </p>
+
+    <p>
+      And one day, InshaAllah, I want to celebrate your birthday beside you...
+      not through a screen, but by holding your hand. ❤️
+    </p>
+
+    <h2>Happy Birthday, My Future Life Partner ❤️🎂</h2>
+
+    <p><strong>Forever yours ❤️</strong></p>
+  </div>
+
+  <div class="footer">
+    Made with love, especially for Safa ❤️
+  </div>
+
+</div>
+
+<script>
+const birthday = new Date("October 10, 2026 00:00:00").getTime();
+
+setInterval(function () {
+  const now = new Date().getTime();
+  const distance = birthday - now;
+
+  if (distance <= 0) {
+    document.getElementById("days").innerHTML = "0";
+    document.getElementById("hours").innerHTML = "0";
+    document.getElementById("minutes").innerHTML = "0";
+    document.getElementById("seconds").innerHTML = "0";
+    return;
+  }
+
+  document.getElementById("days").innerHTML =
+    Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  document.getElementById("hours").innerHTML =
+    Math.floor((distance / (1000 * 60 * 60)) % 24);
+
+  document.getElementById("minutes").innerHTML =
+    Math.floor((distance / (1000 * 60)) % 60);
+
+  document.getElementById("seconds").innerHTML =
+    Math.floor((distance / 1000) % 60);
+}, 1000);
+
+function openSurprise() {
+  document.getElementById("surprise").style.display = "block";
+  document.getElementById("surprise").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "floating-heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 4 + 4) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 8000);
+}
+
+setInterval(createHeart, 700);
+</script>
+
+</body>
+</html>
