@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Birthday Surprise for Safa ❤️</title>
+<title>صفا کے لیے ایک خاص سرپرائز ❤️</title>
 
 <style>
 *{
@@ -17,13 +17,13 @@
 html,body{
     width:100%;
     min-height:100%;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:"Noto Nastaliq Urdu","Noto Sans Arabic",Arial,sans-serif;
     overflow-x:hidden;
     background:#160018;
     color:white;
 }
 
-/* ================= WELCOME ================= */
+/* ========== ویلکم اسکرین ========== */
 
 #welcomeScreen{
     min-height:100vh;
@@ -75,16 +75,16 @@ html,body{
 }
 
 #welcomeScreen h1{
-    font-size:clamp(45px,12vw,90px);
-    margin-bottom:15px;
+    font-size:clamp(42px,10vw,85px);
+    margin-bottom:20px;
     z-index:2;
     text-shadow:0 0 30px rgba(255,70,160,.6);
 }
 
 #welcomeScreen p{
-    max-width:600px;
-    font-size:clamp(18px,5vw,26px);
-    line-height:1.6;
+    max-width:650px;
+    font-size:clamp(19px,5vw,27px);
+    line-height:2;
     color:#f5d7e8;
     z-index:2;
 }
@@ -102,6 +102,7 @@ html,body{
     box-shadow:0 10px 35px rgba(255,255,255,.25);
     transition:.3s;
     z-index:2;
+    font-family:inherit;
 }
 
 .start-btn:hover{
@@ -112,7 +113,7 @@ html,body{
     transform:scale(.96);
 }
 
-/* ================= GAME ================= */
+/* ========== گیم اسکرین ========== */
 
 #gameScreen{
     display:none;
@@ -131,12 +132,13 @@ html,body{
 }
 
 .game-header h2{
-    font-size:clamp(28px,7vw,50px);
+    font-size:clamp(27px,7vw,50px);
     margin-bottom:10px;
 }
 
 .game-header p{
-    font-size:17px;
+    font-size:18px;
+    line-height:1.8;
     color:#f4cce4;
 }
 
@@ -148,12 +150,12 @@ html,body{
 
 #balloonArea{
     position:relative;
-    height:calc(100vh - 155px);
+    height:calc(100vh - 180px);
     min-height:550px;
     overflow:hidden;
 }
 
-/* ================= BALLOON ================= */
+/* ========== غبارے ========== */
 
 .balloon{
     width:85px;
@@ -230,7 +232,7 @@ html,body{
     }
 }
 
-/* ================= POP EFFECT ================= */
+/* ========== پاپ ایفیکٹ ========== */
 
 .pop-particle{
     position:absolute;
@@ -249,7 +251,7 @@ html,body{
     }
 }
 
-/* ================= MESSAGE MODAL ================= */
+/* ========== میسج باکس ========== */
 
 #messageBox{
     display:none;
@@ -291,13 +293,13 @@ html,body{
 }
 
 .message-card h3{
-    font-size:28px;
+    font-size:26px;
     margin-bottom:20px;
 }
 
 .message-card p{
     font-size:20px;
-    line-height:1.7;
+    line-height:2;
     color:white;
 }
 
@@ -311,9 +313,10 @@ html,body{
     font-weight:bold;
     font-size:16px;
     cursor:pointer;
+    font-family:inherit;
 }
 
-/* ================= FINAL SCREEN ================= */
+/* ========== فائنل اسکرین ========== */
 
 #finalScreen{
     display:none;
@@ -330,14 +333,14 @@ html,body{
 }
 
 #finalScreen h1{
-    font-size:clamp(40px,10vw,80px);
+    font-size:clamp(38px,10vw,80px);
     margin-bottom:20px;
 }
 
 #finalScreen p{
     max-width:700px;
     font-size:clamp(19px,5vw,26px);
-    line-height:1.7;
+    line-height:2;
     color:#ffe2f1;
 }
 
@@ -362,7 +365,7 @@ html,body{
     }
 }
 
-/* ================= MOBILE ================= */
+/* ========== موبائل ========== */
 
 @media(max-width:500px){
 
@@ -380,7 +383,7 @@ html,body{
     }
 
     #balloonArea{
-        height:calc(100vh - 145px);
+        height:calc(100vh - 170px);
     }
 
     .message-card{
@@ -392,7 +395,7 @@ html,body{
 
 <body>
 
-<!-- ================= WELCOME ================= -->
+<!-- ========== ویلکم ========== -->
 
 <section id="welcomeScreen">
 
@@ -400,34 +403,34 @@ html,body{
 
     <div class="small-heart">❤️</div>
 
-    <h1>Happy Birthday Safa ❤️</h1>
+    <h1>سالگرہ مبارک صفا ❤️</h1>
 
     <p>
-        Today is not an ordinary day...
-        because someone very special was born on this day.
+        آج کا دن عام نہیں ہے...<br>
+        کیونکہ آج کے دن ایک بہت خاص انسان اس دنیا میں آیا تھا۔
     </p>
 
     <button class="start-btn" onclick="startSurprise()">
-        Start Your Surprise 🎁
+        🎁 اپنا سرپرائز شروع کریں
     </button>
 
 </section>
 
 
-<!-- ================= BALLOON GAME ================= -->
+<!-- ========== غباروں کا کھیل ========== -->
 
 <section id="gameScreen">
 
     <div class="game-header">
 
-        <h2>Pop Your Birthday Balloons 🎈</h2>
+        <h2>🎈 اپنے سرپرائز کے غبارے پھوڑیں 🎈</h2>
 
         <p>
-            Every balloon is hiding something special for you...
+            ہر غبارے میں آپ کے لیے کچھ خاص چھپا ہوا ہے... ❤️
         </p>
 
         <div id="progress">
-            Surprises found: 0 / 10 ❤️
+            دریافت کیے گئے سرپرائز: 0 / 10 ❤️
         </div>
 
     </div>
@@ -437,7 +440,7 @@ html,body{
 </section>
 
 
-<!-- ================= MESSAGE BOX ================= -->
+<!-- ========== میسج باکس ========== -->
 
 <div id="messageBox">
 
@@ -445,12 +448,12 @@ html,body{
 
         <div class="emoji" id="messageEmoji">❤️</div>
 
-        <h3>A Little Surprise for Safa</h3>
+        <h3>صفا کے لیے ایک خاص بات</h3>
 
         <p id="messageText"></p>
 
         <button class="close-btn" onclick="closeMessage()">
-            Find Another Surprise 🎈
+            ایک اور سرپرائز دیکھیں 🎈
         </button>
 
     </div>
@@ -458,29 +461,29 @@ html,body{
 </div>
 
 
-<!-- ================= FINAL SCREEN ================= -->
+<!-- ========== آخری اسکرین ========== -->
 
 <section id="finalScreen">
 
     <div class="final-heart">❤️</div>
 
-    <h1>You Found Them All! 🎉</h1>
+    <h1>آپ نے سارے سرپرائز ڈھونڈ لیے! 🎉</h1>
 
     <p>
-        Safa... every balloon was carrying a small piece of what
-        I feel for you. But honestly, no number of words can fully
-        explain how special you are to me.
+        صفا... ہر غبارے میں میرے دل کی ایک چھوٹی سی بات چھپی ہوئی تھی،
+        لیکن سچ یہ ہے کہ الفاظ کبھی مکمل طور پر بیان نہیں کر سکتے
+        کہ تم میرے لیے کتنی خاص ہو۔ ❤️
     </p>
 
     <br>
 
     <p>
-        And this is only the beginning...
-        because I still have much more waiting for you. 🎁❤️
+        اور یہ تو صرف تمہارے سرپرائز کی شروعات ہے...
+        ابھی بہت کچھ تمہارا انتظار کر رہا ہے۔ 🎁❤️
     </p>
 
     <button class="start-btn" onclick="showFinalMessage()">
-        One More Surprise 💌
+        💌 ایک اور سرپرائز دیکھیں
     </button>
 
 </section>
@@ -488,64 +491,64 @@ html,body{
 
 <script>
 
-/* ================= MESSAGES ================= */
+/* ========== سرپرائز میسجز ========== */
 
 const surprises = [
 
     {
         emoji:"❤️",
-        text:"Safa, you are one of the most beautiful things that has ever happened to me."
+        text:"صفا، تم میری زندگی میں ہونے والی سب سے خوبصورت چیزوں میں سے ایک ہو۔"
     },
 
     {
         emoji:"🥰",
-        text:"Your smile has a strange power... it can make my whole day better."
+        text:"تمہاری ایک مسکراہٹ میرا پورا دن خوبصورت بنا سکتی ہے۔"
     },
 
     {
         emoji:"💌",
-        text:"If I could give you one thing in life, I would give you the ability to see yourself through my eyes."
+        text:"کاش تم کبھی خود کو میری نظروں سے دیکھ سکو، پھر تمہیں اندازہ ہو کہ تم میرے لیے کتنی خاص ہو۔"
     },
 
     {
         emoji:"🌹",
-        text:"You are not just special to me... you are my favorite person."
+        text:"تم صرف خاص نہیں ہو، تم میری سب سے پسندیدہ انسان ہو۔"
     },
 
     {
         emoji:"✨",
-        text:"Some people enter our lives and change everything. You are one of those people, Safa."
+        text:"کچھ لوگ ہماری زندگی میں آتے ہیں اور سب کچھ بدل دیتے ہیں... تم میرے لیے وہی انسان ہو، صفا۔"
     },
 
     {
         emoji:"😘",
-        text:"My favorite surprise in life was finding someone like you."
+        text:"میری زندگی کا سب سے خوبصورت سرپرائز تم جیسا انسان ملنا ہے۔"
     },
 
     {
         emoji:"🫶",
-        text:"No matter how far we are, you always have a place very close to my heart."
+        text:"فاصلے چاہے جتنے بھی ہوں، تم ہمیشہ میرے دل کے بہت قریب رہو گی۔"
     },
 
     {
         emoji:"🎂",
-        text:"Today I celebrate you, your smile, your dreams, and the beautiful person you are."
+        text:"آج میں تمہاری مسکراہٹ، تمہارے خوابوں اور تمہارے خوبصورت وجود کا جشن منا رہا ہوں۔"
     },
 
     {
         emoji:"🌙",
-        text:"I hope one day we will look back at this birthday and smile because our beautiful journey continued."
+        text:"مجھے امید ہے کہ ایک دن ہم پیچھے مڑ کر اس سالگرہ کو یاد کریں گے اور مسکرائیں گے کہ ہمارا خوبصورت سفر کہاں تک پہنچ گیا۔"
     },
 
     {
         emoji:"💍",
-        text:"This is only the first part of your surprise... the most important question is still waiting for you. ❤️"
+        text:"یہ تمہارے سرپرائز کا صرف پہلا حصہ ہے... سب سے اہم سوال ابھی تمہارا انتظار کر رہا ہے۔ ❤️"
     }
 
 ];
 
 
-/* ================= BALLOON SETTINGS ================= */
+/* ========== غباروں کے رنگ ========== */
 
 const colors = [
     "#ff4f9a",
@@ -564,7 +567,7 @@ let popped = 0;
 let gameStarted = false;
 
 
-/* ================= START GAME ================= */
+/* ========== سرپرائز شروع کریں ========== */
 
 function startSurprise(){
 
@@ -579,7 +582,7 @@ function startSurprise(){
 }
 
 
-/* ================= CREATE BALLOONS ================= */
+/* ========== غبارے بنائیں ========== */
 
 function createBalloons(){
 
@@ -616,7 +619,7 @@ function createBalloons(){
 }
 
 
-/* ================= POP BALLOON ================= */
+/* ========== غبارہ پھوڑیں ========== */
 
 function popBalloon(balloon,index,event){
 
@@ -637,7 +640,7 @@ function popBalloon(balloon,index,event){
     popped++;
 
     document.getElementById("progress").innerHTML =
-        "Surprises found: " + popped + " / 10 ❤️";
+        "دریافت کیے گئے سرپرائز: " + popped + " / 10 ❤️";
 
     setTimeout(()=>{
 
@@ -652,7 +655,7 @@ function popBalloon(balloon,index,event){
 }
 
 
-/* ================= PARTICLES ================= */
+/* ========== پاپ ایفیکٹ ========== */
 
 function createParticles(x,y,color){
 
@@ -694,7 +697,7 @@ function createParticles(x,y,color){
 }
 
 
-/* ================= SHOW MESSAGE ================= */
+/* ========== میسج دکھائیں ========== */
 
 function showMessage(emoji,text){
 
@@ -709,7 +712,7 @@ function showMessage(emoji,text){
 }
 
 
-/* ================= CLOSE MESSAGE ================= */
+/* ========== میسج بند کریں ========== */
 
 function closeMessage(){
 
@@ -733,7 +736,7 @@ function closeMessage(){
 }
 
 
-/* ================= CONFETTI ================= */
+/* ========== کنفیٹی ========== */
 
 function launchConfetti(){
 
@@ -766,24 +769,24 @@ function launchConfetti(){
 }
 
 
-/* ================= FINAL MESSAGE ================= */
+/* ========== آخری سرپرائز ========== */
 
 function showFinalMessage(){
 
     document.querySelector("#finalScreen h1").innerHTML =
-        "Wait... ❤️";
+        "ایک لمحہ... ❤️";
 
     document.querySelector("#finalScreen p").innerHTML =
-        "This was just the beginning of your birthday journey, Safa. The next surprise is waiting for you... 💌";
+        "یہ تمہارے سرپرائز کی صرف شروعات تھی، صفا۔ ابھی ایک اور خوبصورت حصہ تمہارا انتظار کر رہا ہے... 💌";
 
     document.querySelector("#finalScreen .start-btn").innerHTML =
-        "Continue Your Surprise ➜";
+        "اپنا سفر جاری رکھیں ➜";
 
     document.querySelector("#finalScreen .start-btn").onclick =
         function(){
 
             alert(
-                "The next chapter of your surprise is coming soon ❤️"
+                "اگلا سرپرائز بہت جلد یہاں ہوگا ❤️"
             );
 
         };
