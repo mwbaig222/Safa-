@@ -4,265 +4,791 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Special Surprise for Safa ❤️</title>
+<title>A Birthday Surprise for Safa ❤️</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
-body {
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ff4f81, #8b1e5a, #4b1248);
-  color: white;
-  overflow-x: hidden;
+html,body{
+    width:100%;
+    min-height:100%;
+    font-family:Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
+    background:#160018;
+    color:white;
 }
 
-.container {
-  min-height: 100vh;
-  text-align: center;
-  padding: 60px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+/* ================= WELCOME ================= */
+
+#welcomeScreen{
+    min-height:100vh;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at top,#7b1e65 0%,transparent 40%),
+        linear-gradient(135deg,#21001f,#09000b);
 }
 
-.heart {
-  font-size: 65px;
-  animation: beat 1.2s infinite;
+.glow{
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:#ff4fa3;
+    filter:blur(100px);
+    opacity:.25;
+    animation:moveGlow 7s infinite alternate ease-in-out;
 }
 
-h1 {
-  font-size: clamp(42px, 10vw, 90px);
-  margin: 15px 0;
-  text-shadow: 0 5px 15px rgba(0,0,0,.3);
+@keyframes moveGlow{
+    from{
+        transform:translate(-150px,-100px);
+    }
+    to{
+        transform:translate(180px,180px);
+    }
 }
 
-.subtitle {
-  font-size: clamp(18px, 4vw, 28px);
-  margin-bottom: 35px;
+.small-heart{
+    font-size:70px;
+    animation:heartBeat 1.4s infinite;
+    margin-bottom:15px;
+    z-index:2;
 }
 
-#countdown {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 35px;
+@keyframes heartBeat{
+    50%{
+        transform:scale(1.2);
+    }
 }
 
-.time-box {
-  min-width: 90px;
-  padding: 15px;
-  background: rgba(255,255,255,.18);
-  border: 1px solid rgba(255,255,255,.4);
-  border-radius: 18px;
-  backdrop-filter: blur(10px);
+#welcomeScreen h1{
+    font-size:clamp(45px,12vw,90px);
+    margin-bottom:15px;
+    z-index:2;
+    text-shadow:0 0 30px rgba(255,70,160,.6);
 }
 
-.number {
-  display: block;
-  font-size: 32px;
-  font-weight: bold;
+#welcomeScreen p{
+    max-width:600px;
+    font-size:clamp(18px,5vw,26px);
+    line-height:1.6;
+    color:#f5d7e8;
+    z-index:2;
 }
 
-.label {
-  font-size: 13px;
-  opacity: .9;
+.start-btn{
+    margin-top:35px;
+    padding:18px 38px;
+    border:none;
+    border-radius:50px;
+    background:white;
+    color:#8a125d;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 10px 35px rgba(255,255,255,.25);
+    transition:.3s;
+    z-index:2;
 }
 
-button {
-  border: none;
-  border-radius: 50px;
-  padding: 18px 35px;
-  font-size: 19px;
-  font-weight: bold;
-  cursor: pointer;
-  background: white;
-  color: #c2185b;
-  box-shadow: 0 8px 25px rgba(0,0,0,.25);
-  transition: .3s;
+.start-btn:hover{
+    transform:scale(1.08);
 }
 
-button:hover {
-  transform: scale(1.08);
+.start-btn:active{
+    transform:scale(.96);
 }
 
-#surprise {
-  display: none;
-  max-width: 750px;
-  margin-top: 40px;
-  padding: 35px 25px;
-  background: rgba(255,255,255,.15);
-  border-radius: 25px;
-  line-height: 1.8;
-  font-size: 19px;
-  backdrop-filter: blur(12px);
+/* ================= GAME ================= */
+
+#gameScreen{
+    display:none;
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at center,#53113f 0%,#160018 70%);
 }
 
-#surprise h2 {
-  font-size: 35px;
-  margin-bottom: 20px;
+.game-header{
+    text-align:center;
+    padding:25px 15px;
+    position:relative;
+    z-index:20;
 }
 
-#surprise p {
-  margin-bottom: 18px;
+.game-header h2{
+    font-size:clamp(28px,7vw,50px);
+    margin-bottom:10px;
 }
 
-.floating-heart {
-  position: fixed;
-  bottom: -30px;
-  font-size: 25px;
-  animation: floatUp linear infinite;
-  pointer-events: none;
+.game-header p{
+    font-size:17px;
+    color:#f4cce4;
 }
 
-@keyframes beat {
-  50% {
-    transform: scale(1.15);
-  }
+#progress{
+    margin-top:14px;
+    font-size:18px;
+    font-weight:bold;
 }
 
-@keyframes floatUp {
-  to {
-    transform: translateY(-110vh) rotate(360deg);
-    opacity: 0;
-  }
+#balloonArea{
+    position:relative;
+    height:calc(100vh - 155px);
+    min-height:550px;
+    overflow:hidden;
 }
 
-.footer {
-  margin-top: 40px;
-  opacity: .8;
-  font-size: 14px;
+/* ================= BALLOON ================= */
+
+.balloon{
+    width:85px;
+    height:105px;
+    position:absolute;
+    border-radius:50% 50% 48% 48%;
+    cursor:pointer;
+    box-shadow:
+        inset -12px -10px 25px rgba(0,0,0,.25),
+        inset 10px 10px 20px rgba(255,255,255,.28),
+        0 15px 30px rgba(0,0,0,.3);
+    animation:floatBalloon linear infinite;
+    transition:.15s;
+    touch-action:manipulation;
+}
+
+.balloon:active{
+    transform:scale(.85);
+}
+
+.balloon::before{
+    content:"";
+    position:absolute;
+    width:17px;
+    height:25px;
+    background:inherit;
+    left:50%;
+    bottom:-12px;
+    transform:translateX(-50%);
+    clip-path:polygon(0 0,100% 0,50% 100%);
+}
+
+.balloon::after{
+    content:"";
+    position:absolute;
+    width:2px;
+    height:85px;
+    background:rgba(255,255,255,.55);
+    left:50%;
+    top:100%;
+}
+
+@keyframes floatBalloon{
+    0%{
+        transform:translateY(110vh) rotate(-8deg);
+    }
+
+    50%{
+        transform:translateY(45vh) rotate(8deg);
+    }
+
+    100%{
+        transform:translateY(-150px) rotate(-8deg);
+    }
+}
+
+.balloon.popping{
+    animation:pop .35s forwards !important;
+}
+
+@keyframes pop{
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    50%{
+        transform:scale(1.6);
+    }
+
+    100%{
+        transform:scale(0);
+        opacity:0;
+    }
+}
+
+/* ================= POP EFFECT ================= */
+
+.pop-particle{
+    position:absolute;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:30;
+    animation:particle .8s forwards;
+}
+
+@keyframes particle{
+    to{
+        transform:translate(var(--x),var(--y)) scale(0);
+        opacity:0;
+    }
+}
+
+/* ================= MESSAGE MODAL ================= */
+
+#messageBox{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    backdrop-filter:blur(8px);
+    z-index:100;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.message-card{
+    width:min(90%,550px);
+    padding:40px 25px;
+    border-radius:30px;
+    text-align:center;
+    background:linear-gradient(135deg,#ff4f9a,#7a1d69);
+    box-shadow:0 20px 80px rgba(0,0,0,.5);
+    animation:cardEnter .45s ease;
+}
+
+@keyframes cardEnter{
+    from{
+        opacity:0;
+        transform:scale(.6) translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+.message-card .emoji{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.message-card h3{
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+.message-card p{
+    font-size:20px;
+    line-height:1.7;
+    color:white;
+}
+
+.close-btn{
+    margin-top:30px;
+    padding:14px 32px;
+    border:none;
+    border-radius:40px;
+    background:white;
+    color:#8a125d;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+}
+
+/* ================= FINAL SCREEN ================= */
+
+#finalScreen{
+    display:none;
+    min-height:100vh;
+    text-align:center;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding:25px;
+    background:
+        radial-gradient(circle,#7a1d69,#21001f 70%);
+    position:relative;
+    overflow:hidden;
+}
+
+#finalScreen h1{
+    font-size:clamp(40px,10vw,80px);
+    margin-bottom:20px;
+}
+
+#finalScreen p{
+    max-width:700px;
+    font-size:clamp(19px,5vw,26px);
+    line-height:1.7;
+    color:#ffe2f1;
+}
+
+.final-heart{
+    font-size:90px;
+    margin:20px;
+    animation:heartBeat 1.3s infinite;
+}
+
+.confetti{
+    position:fixed;
+    width:10px;
+    height:18px;
+    top:-30px;
+    animation:confettiFall linear forwards;
+    z-index:200;
+}
+
+@keyframes confettiFall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:500px){
+
+    .balloon{
+        width:70px;
+        height:88px;
+    }
+
+    .balloon::after{
+        height:65px;
+    }
+
+    .game-header{
+        padding-top:18px;
+    }
+
+    #balloonArea{
+        height:calc(100vh - 145px);
+    }
+
+    .message-card{
+        padding:35px 20px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- ================= WELCOME ================= -->
 
-  <div class="heart">❤️</div>
+<section id="welcomeScreen">
 
-  <h1>For Safa ❤️</h1>
+    <div class="glow"></div>
 
-  <p class="subtitle">
-    Something beautiful is waiting for you...
-  </p>
+    <div class="small-heart">❤️</div>
 
-  <div id="countdown">
-    <div class="time-box">
-      <span class="number" id="days">0</span>
-      <span class="label">DAYS</span>
-    </div>
-
-    <div class="time-box">
-      <span class="number" id="hours">0</span>
-      <span class="label">HOURS</span>
-    </div>
-
-    <div class="time-box">
-      <span class="number" id="minutes">0</span>
-      <span class="label">MINUTES</span>
-    </div>
-
-    <div class="time-box">
-      <span class="number" id="seconds">0</span>
-      <span class="label">SECONDS</span>
-    </div>
-  </div>
-
-  <button onclick="openSurprise()">🎁 Open Your Surprise</button>
-
-  <div id="surprise">
-    <h2>Happy Birthday, Safa! 🎂❤️</h2>
+    <h1>Happy Birthday Safa ❤️</h1>
 
     <p>
-      My beautiful Safa, today is not just your birthday...
-      Today is the day the world became more beautiful because you came into it. ❤️
+        Today is not an ordinary day...
+        because someone very special was born on this day.
     </p>
 
-    <p>
-      I may not be beside you right now, but my heart is with you.
-      Every smile of yours is special to me, and I hope this small surprise
-      makes your day unforgettable.
-    </p>
+    <button class="start-btn" onclick="startSurprise()">
+        Start Your Surprise 🎁
+    </button>
 
-    <p>
-      I pray that this new year of your life brings you endless happiness,
-      beautiful dreams, success, peace, and everything your heart desires.
-    </p>
+</section>
 
-    <p>
-      And one day, InshaAllah, I want to celebrate your birthday beside you...
-      not through a screen, but by holding your hand. ❤️
-    </p>
 
-    <h2>Happy Birthday, My Future Life Partner ❤️🎂</h2>
+<!-- ================= BALLOON GAME ================= -->
 
-    <p><strong>Forever yours ❤️</strong></p>
-  </div>
+<section id="gameScreen">
 
-  <div class="footer">
-    Made with love, especially for Safa ❤️
-  </div>
+    <div class="game-header">
+
+        <h2>Pop Your Birthday Balloons 🎈</h2>
+
+        <p>
+            Every balloon is hiding something special for you...
+        </p>
+
+        <div id="progress">
+            Surprises found: 0 / 10 ❤️
+        </div>
+
+    </div>
+
+    <div id="balloonArea"></div>
+
+</section>
+
+
+<!-- ================= MESSAGE BOX ================= -->
+
+<div id="messageBox">
+
+    <div class="message-card">
+
+        <div class="emoji" id="messageEmoji">❤️</div>
+
+        <h3>A Little Surprise for Safa</h3>
+
+        <p id="messageText"></p>
+
+        <button class="close-btn" onclick="closeMessage()">
+            Find Another Surprise 🎈
+        </button>
+
+    </div>
 
 </div>
 
+
+<!-- ================= FINAL SCREEN ================= -->
+
+<section id="finalScreen">
+
+    <div class="final-heart">❤️</div>
+
+    <h1>You Found Them All! 🎉</h1>
+
+    <p>
+        Safa... every balloon was carrying a small piece of what
+        I feel for you. But honestly, no number of words can fully
+        explain how special you are to me.
+    </p>
+
+    <br>
+
+    <p>
+        And this is only the beginning...
+        because I still have much more waiting for you. 🎁❤️
+    </p>
+
+    <button class="start-btn" onclick="showFinalMessage()">
+        One More Surprise 💌
+    </button>
+
+</section>
+
+
 <script>
-const birthday = new Date("October 10, 2026 00:00:00").getTime();
 
-setInterval(function () {
-  const now = new Date().getTime();
-  const distance = birthday - now;
+/* ================= MESSAGES ================= */
 
-  if (distance <= 0) {
-    document.getElementById("days").innerHTML = "0";
-    document.getElementById("hours").innerHTML = "0";
-    document.getElementById("minutes").innerHTML = "0";
-    document.getElementById("seconds").innerHTML = "0";
-    return;
-  }
+const surprises = [
 
-  document.getElementById("days").innerHTML =
-    Math.floor(distance / (1000 * 60 * 60 * 24));
+    {
+        emoji:"❤️",
+        text:"Safa, you are one of the most beautiful things that has ever happened to me."
+    },
 
-  document.getElementById("hours").innerHTML =
-    Math.floor((distance / (1000 * 60 * 60)) % 24);
+    {
+        emoji:"🥰",
+        text:"Your smile has a strange power... it can make my whole day better."
+    },
 
-  document.getElementById("minutes").innerHTML =
-    Math.floor((distance / (1000 * 60)) % 60);
+    {
+        emoji:"💌",
+        text:"If I could give you one thing in life, I would give you the ability to see yourself through my eyes."
+    },
 
-  document.getElementById("seconds").innerHTML =
-    Math.floor((distance / 1000) % 60);
-}, 1000);
+    {
+        emoji:"🌹",
+        text:"You are not just special to me... you are my favorite person."
+    },
 
-function openSurprise() {
-  document.getElementById("surprise").style.display = "block";
-  document.getElementById("surprise").scrollIntoView({
-    behavior: "smooth"
-  });
+    {
+        emoji:"✨",
+        text:"Some people enter our lives and change everything. You are one of those people, Safa."
+    },
+
+    {
+        emoji:"😘",
+        text:"My favorite surprise in life was finding someone like you."
+    },
+
+    {
+        emoji:"🫶",
+        text:"No matter how far we are, you always have a place very close to my heart."
+    },
+
+    {
+        emoji:"🎂",
+        text:"Today I celebrate you, your smile, your dreams, and the beautiful person you are."
+    },
+
+    {
+        emoji:"🌙",
+        text:"I hope one day we will look back at this birthday and smile because our beautiful journey continued."
+    },
+
+    {
+        emoji:"💍",
+        text:"This is only the first part of your surprise... the most important question is still waiting for you. ❤️"
+    }
+
+];
+
+
+/* ================= BALLOON SETTINGS ================= */
+
+const colors = [
+    "#ff4f9a",
+    "#ff7a59",
+    "#ffcc33",
+    "#8d5cff",
+    "#00c9a7",
+    "#ff5c8a",
+    "#ff9f1c",
+    "#e85aad",
+    "#5f7cff",
+    "#ff4060"
+];
+
+let popped = 0;
+let gameStarted = false;
+
+
+/* ================= START GAME ================= */
+
+function startSurprise(){
+
+    document.getElementById("welcomeScreen").style.display = "none";
+
+    document.getElementById("gameScreen").style.display = "block";
+
+    if(!gameStarted){
+        gameStarted = true;
+        createBalloons();
+    }
 }
 
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.className = "floating-heart";
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (Math.random() * 4 + 4) + "s";
 
-  document.body.appendChild(heart);
+/* ================= CREATE BALLOONS ================= */
 
-  setTimeout(() => {
-    heart.remove();
-  }, 8000);
+function createBalloons(){
+
+    const area = document.getElementById("balloonArea");
+
+    surprises.forEach((surprise,index)=>{
+
+        const balloon = document.createElement("div");
+
+        balloon.className = "balloon";
+
+        balloon.style.background = colors[index];
+
+        balloon.style.left =
+            (5 + Math.random() * 80) + "%";
+
+        balloon.style.animationDuration =
+            (7 + Math.random() * 7) + "s";
+
+        balloon.style.animationDelay =
+            (Math.random() * 3) + "s";
+
+        balloon.dataset.index = index;
+
+        balloon.addEventListener("click",function(e){
+
+            popBalloon(balloon,index,e);
+
+        });
+
+        area.appendChild(balloon);
+
+    });
 }
 
-setInterval(createHeart, 700);
+
+/* ================= POP BALLOON ================= */
+
+function popBalloon(balloon,index,event){
+
+    if(balloon.classList.contains("popping")){
+        return;
+    }
+
+    balloon.classList.add("popping");
+
+    const rect = balloon.getBoundingClientRect();
+
+    createParticles(
+        rect.left + rect.width / 2,
+        rect.top + rect.height / 2,
+        colors[index]
+    );
+
+    popped++;
+
+    document.getElementById("progress").innerHTML =
+        "Surprises found: " + popped + " / 10 ❤️";
+
+    setTimeout(()=>{
+
+        balloon.remove();
+
+        showMessage(
+            surprises[index].emoji,
+            surprises[index].text
+        );
+
+    },300);
+}
+
+
+/* ================= PARTICLES ================= */
+
+function createParticles(x,y,color){
+
+    for(let i=0;i<20;i++){
+
+        const particle =
+            document.createElement("div");
+
+        particle.className = "pop-particle";
+
+        particle.style.background = color;
+
+        particle.style.left = x + "px";
+
+        particle.style.top = y + "px";
+
+        const angle =
+            Math.random() * Math.PI * 2;
+
+        const distance =
+            60 + Math.random() * 100;
+
+        particle.style.setProperty(
+            "--x",
+            Math.cos(angle) * distance + "px"
+        );
+
+        particle.style.setProperty(
+            "--y",
+            Math.sin(angle) * distance + "px"
+        );
+
+        document.body.appendChild(particle);
+
+        setTimeout(()=>{
+            particle.remove();
+        },800);
+    }
+}
+
+
+/* ================= SHOW MESSAGE ================= */
+
+function showMessage(emoji,text){
+
+    document.getElementById("messageEmoji").innerHTML =
+        emoji;
+
+    document.getElementById("messageText").innerHTML =
+        text;
+
+    document.getElementById("messageBox").style.display =
+        "flex";
+}
+
+
+/* ================= CLOSE MESSAGE ================= */
+
+function closeMessage(){
+
+    document.getElementById("messageBox").style.display =
+        "none";
+
+    if(popped === surprises.length){
+
+        setTimeout(()=>{
+
+            document.getElementById("gameScreen").style.display =
+                "none";
+
+            document.getElementById("finalScreen").style.display =
+                "flex";
+
+            launchConfetti();
+
+        },300);
+    }
+}
+
+
+/* ================= CONFETTI ================= */
+
+function launchConfetti(){
+
+    for(let i=0;i<120;i++){
+
+        const confetti =
+            document.createElement("div");
+
+        confetti.className =
+            "confetti";
+
+        confetti.style.left =
+            Math.random() * 100 + "vw";
+
+        confetti.style.background =
+            colors[Math.floor(Math.random()*colors.length)];
+
+        confetti.style.animationDuration =
+            (3 + Math.random() * 3) + "s";
+
+        confetti.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(()=>{
+            confetti.remove();
+        },7000);
+    }
+}
+
+
+/* ================= FINAL MESSAGE ================= */
+
+function showFinalMessage(){
+
+    document.querySelector("#finalScreen h1").innerHTML =
+        "Wait... ❤️";
+
+    document.querySelector("#finalScreen p").innerHTML =
+        "This was just the beginning of your birthday journey, Safa. The next surprise is waiting for you... 💌";
+
+    document.querySelector("#finalScreen .start-btn").innerHTML =
+        "Continue Your Surprise ➜";
+
+    document.querySelector("#finalScreen .start-btn").onclick =
+        function(){
+
+            alert(
+                "The next chapter of your surprise is coming soon ❤️"
+            );
+
+        };
+}
+
 </script>
 
 </body>
